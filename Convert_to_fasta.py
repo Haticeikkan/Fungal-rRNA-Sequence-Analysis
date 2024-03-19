@@ -5,7 +5,7 @@ from urllib.request import urlopen
 
 # Linkteki dosyayı İndir
 url = "https://ftp.ncbi.nlm.nih.gov/refseq/TargetedLoci/Fungi/fungi.28SrRNA.gbff.gz"
-output_file = "28S_rRNA.fasta"
+output_file = "28S_rRNA.fasta" #Dosyaya isim ver
 
 try:
     with urlopen(url) as response, open("fungi.28SrRNA.gbff.gz", 'wb') as out_file:
