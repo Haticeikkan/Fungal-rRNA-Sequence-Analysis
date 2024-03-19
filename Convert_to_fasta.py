@@ -1,8 +1,9 @@
+#Gerekli kütüphaneler
 import gzip
 from Bio import SeqIO
 from urllib.request import urlopen
 
-# Dosyayı İndir
+# Linkteki dosyayı İndir
 url = "https://ftp.ncbi.nlm.nih.gov/refseq/TargetedLoci/Fungi/fungi.28SrRNA.gbff.gz"
 output_file = "28S_rRNA.fasta"
 
@@ -15,7 +16,7 @@ except Exception as e:
 
 # Dosyayı aç
 with gzip.open("fungi.28SrRNA.gbff.gz", 'rt') as gbff_file:
-    # Ayrıştır the GBFF file
+    # GBFF dosyasını çözümle
     records = SeqIO.parse(gbff_file, "genbank")
     
     # Veriyi FASTA formatına dönüştür

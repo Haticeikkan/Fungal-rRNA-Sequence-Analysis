@@ -1,3 +1,6 @@
+#Bu kod Bursa Uludağ Üniversitesi Tıp Fakültesi Tıbbi Mikrobiyoloji BAP TGA:2023-1313 Projesi kapsamında geliştirilmiştir.
+#Bu kodu geliştirenler Ayşen İKKAN ve Hatice İKKAN :)
+
 #Gerekli kütüphaneler kullanıldı.
 from Bio.Blast import NCBIWWW, NCBIXML
 from Bio import SeqIO
@@ -5,7 +8,7 @@ import os
 import sys
 
 # Referans suşlarının bulunduğu klasör
-reference_folder = r"D:\ALSU\Fungal-rRNA-Sequence-Analysis\Türler"
+reference_folder = r"D:\Fungal-rRNA-Sequence-Analysis\Türler"
 
 # BLAST için kullanılacak veritabanı
 database = "nt"
@@ -20,7 +23,7 @@ for file_name in os.listdir(reference_folder):
                 reference_sequences.append(record)
 
 # Analiz edilecek .fasta dosyasını buraya yazınız.
-query_file = r"D:\ALSU\Fungal-rRNA-Sequence-Analysis\Fastalar\68842.fasta"
+query_file = r"D:\Fungal-rRNA-Sequence-Analysis\Fastalar\68842.fasta"
 
 # BLAST sonuçlarının analiz edileceği eşik değerleri
 min_identity = 96  # Minimum eşleşme yüzdesi
@@ -59,8 +62,8 @@ with open(query_file, "r") as handle:
                     print("Subject Start:", hsp.sbjct_start)  # Referans dizisinin hizalanmış başlangıç pozisyonu
                     print("Subject End:", hsp.sbjct_end)  # Referans dizisinin hizalanmış bitiş pozisyonu
                     print("Query Coverage:", hsp.align_length / blast_record.query_letters * 100)  # Sorgu dizisinin hizalama boyunca kapsama yüzdesi 
-                    print("Percentage Identity (PID):", hsp.identities / hsp.align_length * 100)
-                    print("Number of Identical Matches:", hsp.identities)
+                    print("Percentage Identity (PID):", hsp.identities / hsp.align_length * 100)  # Tanımlama yüzdeliği
+                    print("Number of Identical Matches:", hsp.identities)  # Bire bir eşleşme sayısı
                     print("Number of Mismatches:", hsp.align_length - hsp.identities - hsp.gaps)  # Hizalama boyunca farklılık gösteren nükleotid sayısı
                     print("Number of Gaps:", hsp.gaps)  # Hizalama boyunca açık bırakılan boşluk sayısı
                     print("Bit Score:", hsp.bits)  # HSP'nin bit puanı
