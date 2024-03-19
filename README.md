@@ -1,11 +1,11 @@
 # Fungal-rRNA-Sequence-Analysis
 
-<img src="Fungal-rRNA-Sequence-Analysis.png">
+<img src="Resimler/Fungal-rRNA-Sequence-Analysis.png">
 
 <p>Mantarların tanımlanması için ribozomal RNA bölgelerinden 18S, 28S ve ITS bölgeleri kullanılmaktadır. Ancak bunlardan ITS dizisi tür düzeyinde tanımlama için aynı türün bireyleri arasındaki farklılığının az, değişik türler arasındaki farklılığının fazla olması nedeniyle altın standart olarak kullanılmasını sağlamıştır.<p> <br>
 
 <p>Ökaryotik canlılarda bu gen bölgesi 18S small subunit (SSU), 28S large subunit (LSU) ve 5.8S subunit oluşmaktadır. Bu üç gen kompleksi arasında onları birbirinden ayıran ITS bölgeleri bulunur. ITS1 ve ITS2 bölgeleri türler arasında değişiklikler göstermektedir.<p> <br> 
-<img src="Ribozomal_DNA_gen_kompleksi.png">
+<img src="Resimler/Ribozomal_DNA_gen_kompleksi.png">
 Resim 1: Ribozomal DNA gen kompleksi <br>
 
 <p>Ancak bazı durumlarda bu gen bölgeleri yeterli gelmeyebilir. Bu gibi durumlarda farklı bölgelerde değerlendirilmeye alınmaktadır. Bu çalışmada da ITS bölgelerinin yanı sıra 18S rRNA ve 28S rRNA bölgeleri değerlendirmeye alınmıştır. <p> <br>
@@ -25,8 +25,8 @@ Resim 1: Ribozomal DNA gen kompleksi <br>
 <p>Sequence Analiz burada yapılmıştır. Öncelikle Biopython kütüphanesi indirilip kurulmuştur. Daha sonra aynı dizinde Fungal-rRNA-Sequence-Analysis adında bir klasör oluşturulup kodlar bu klasör içinde yazılmıştır. Klasör içinde ayrıca Türler(Referans alınacak suşların bulunduğu klasör) ve Fastalar(Analizi yapılacak .fasta dosyaları) adlı klasör oluşturulup gereken dosyalar konularak analiz yapılmaktadır.Analiz yapılırken benzerlik oranı en yüksek 5 tür yazdırılmıştır.<p>
 
 ##### Örnek Çıktılar
-<img src="Ornek1.png">
+<img src="Resimler/Ornek1.png">
 Resim 2: Örnek 1
 <br>
-<img src="Ornek2.png">
+<img src="Resimler/Ornek2.png">
 Resim 3: Örnek 2
