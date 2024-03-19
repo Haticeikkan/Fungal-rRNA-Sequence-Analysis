@@ -5,10 +5,6 @@
 <p>Mantarların tanımlanması için ribozomal RNA bölgelerinden 18S, 28S ve ITS bölgeleri kullanılmaktadır. Ancak bunlardan ITS dizisi tür düzeyinde tanımlama için aynı türün bireyleri arasındaki farklılığının az, değişik türler arasındaki farklılığının fazla olması nedeniyle altın standart olarak kullanılmasını sağlamıştır.<p>
 
 <p>Ökaryotik canlılarda bu gen bölgesi 18S small subunit (SSU), 28S large subunit (LSU) ve 5.8S subunit oluşmaktadır. Bu üç gen kompleksi arasında onları birbirinden ayıran ITS bölgeleri bulunur. ITS1 ve ITS2 bölgeleri türler arasında değişiklikler göstermektedir.<p>
-<img src="Resimler/Ribozomal_DNA_gen_kompleksi.png"><br>
-Resim 1: Ribozomal DNA gen kompleksi
-
-<p>Ökaryotik canlılarda bu gen bölgesi 18S small subunit (SSU), 28S large subunit (LSU) ve 5.8S subunit oluşmaktadır. Bu üç gen kompleksi arasında onları birbirinden ayıran ITS bölgeleri bulunur. ITS1 ve ITS2 bölgeleri türler arasında değişiklikler göstermektedir.<p> <br> 
 <img src="Resimler/Ribozomal_DNA_gen_kompleksi.png"> <br>
 Resim 1: Ribozomal DNA gen kompleksi <br>
 
