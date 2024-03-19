@@ -1,5 +1,5 @@
 #Bu kod Bursa Uludağ Üniversitesi Tıp Fakültesi Tıbbi Mikrobiyoloji BAP TGA:2023-1313 Projesi kapsamında geliştirilmiştir.
-#Bu kodu geliştirenler Ayşen İKKAN ve Hatice İKKAN :)
+#Geliştiriciler: Ayşen İKKAN ve Hatice İKKAN :)
 
 #Gerekli kütüphaneler kullanıldı.
 from Bio.Blast import NCBIWWW, NCBIXML
