@@ -9,13 +9,12 @@
 Resim 1: Ribozomal DNA gen kompleksi
 
 <p>Ökaryotik canlılarda bu gen bölgesi 18S small subunit (SSU), 28S large subunit (LSU) ve 5.8S subunit oluşmaktadır. Bu üç gen kompleksi arasında onları birbirinden ayıran ITS bölgeleri bulunur. ITS1 ve ITS2 bölgeleri türler arasında değişiklikler göstermektedir.<p> <br> 
-<img src="Resimler/Ribozomal_DNA_gen_kompleksi.png">
+<img src="Resimler/Ribozomal_DNA_gen_kompleksi.png"> <br>
 Resim 1: Ribozomal DNA gen kompleksi <br>
 
 <p>Ancak bazı durumlarda bu gen bölgeleri yeterli gelmeyebilir. Bu gibi durumlarda farklı bölgelerde değerlendirilmeye alınmaktadır. Bu çalışmada da ITS bölgelerinin yanı sıra 18S rRNA ve 28S rRNA bölgeleri değerlendirmeye alınmıştır. <p>
->>>>>>> f1ab0f75eb02420ed7185b902bea21068030c328
 
-<p>Güvenilir bir tanımlama yapmak için National Center for Biotechnology Information (NCBI)'ın referans sequence dosyalarının olduğu RefSeq Targeted Loci Project Fungi (Fungi FTP:https://ftp.ncbi.nlm.nih.gov/refseq/TargetedLoci/Fungi/) dizilerini Biopython (https://github.com/biopython) kütüphanesiyle analiz edildi.<p>
+<p>Güvenilir bir tanımlama yapmak için National Center for Biotechnology Information (NCBI)'ın referans sequence dosyalarının olduğu RefSeq Targeted Loci Project Fungi (Fungi FTP: https://ftp.ncbi.nlm.nih.gov/refseq/TargetedLoci/Fungi/) dizilerini Biopython (https://github.com/biopython) kütüphanesiyle analiz edildi.<p>
 
 ## Gereklilikler
 - Visual Studio Code <br>
@@ -30,6 +29,6 @@ Resim 1: Ribozomal DNA gen kompleksi <br>
 ##### Örnek Çıktılar
 <img src="Resimler/Ornek1.png">
 Resim 2: Örnek 1
-<br>
+<p> <p>
 <img src="Resimler/Ornek2.png">
 Resim 3: Örnek 2
