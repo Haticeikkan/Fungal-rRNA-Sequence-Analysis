@@ -1,5 +1,6 @@
-#Bu kod Bursa Uludağ Üniversitesi Tıp Fakültesi Tıbbi Mikrobiyoloji BAP TGA:2023-1313 Projesi kapsamında geliştirilmiştir.
-#Geliştiriciler: Ayşen İKKAN ve Hatice İKKAN :)
+# Bu kod Bursa Uludağ Üniversitesi Tıp Fakültesi Tıbbi Mikrobiyoloji BAP TGA:2023-1313 Projesi kapsamında geliştirilmiştir.
+# Geliştiriciler: Ayşen İKKAN ve Hatice İKKAN :)
+# Bu kod NCBI RefSeq Targeted Loci Project kapsamında Referans Sekanslarla analiz yapmaktadır.
 
 #Gerekli kütüphaneler kullanıldı.
 from Bio import SeqIO, SearchIO
@@ -13,7 +14,7 @@ reference_folder = r"C:\Fungal-rRNA-Sequence-Analysis\Turler"
 # Oluşturulacak my_database.fasta dosyasının yolu ve adı
 my_database_file = os.path.join(reference_folder, "my_database.fasta")
 
-# Eğer custom_database.fasta dosyası yoksa oluştur
+# Eğer my_database.fasta dosyası yoksa oluştur
 if not os.path.exists(my_database_file):
     # Birleştirilecek .fasta dosyalarının adları
     fasta_files = ["18S_rRNA.fasta", "28S_rRNA.fasta", "ITS.fasta"]

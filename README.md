@@ -24,11 +24,14 @@ Resim 1: Ribozomal DNA gen kompleksi <br>
 <p>Sequence Analiz burada yapılmıştır. Öncelikle Biopython ve Blast+ indirilip kurulmalıdır. Daha sonra aynı dizinde Fungal-rRNA-Sequence-Analysis adında bir klasör oluşturulup kodlar bu klasör içinde yazılmıştır. Klasör içinde ayrıca Turler(Referans alınacak suşların bulunduğu klasör) ve Fastalar(Analizi yapılacak .fasta dosyaları) adlı klasör oluşturulup gereken dosyalar konularak analiz yapılmaktadır.Analiz yapılırken benzerlik oranı en yüksek 5 tür yazdırılmıştır.<p>
 
 ### Örnek Çıktılar
-<img src="Resimler/Ornek1.png">
+<img src="Resimler/Ornek1.png"> <br>
 Resim 2: Örnek 1
 <p> <p>
 <img src="Resimler/Ornek2.png"> <br>
 Resim 3: Örnek 2
 <p> <p>
-<img src="Resimler/Ornek3.png">
+<img src="Resimler/Ornek3.png"> <br>
 Resim 4: Örnek 3
+
+#### NOT: Referance-Sequence-Analysis Dosyası
+Bu dosya Blast veritabanını kullanarak analiz yapmaktadır.
