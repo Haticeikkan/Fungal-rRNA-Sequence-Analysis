@@ -27,7 +27,7 @@ Resim 1: Ribozomal DNA gen kompleksi <br>
 <img src="Resimler/Ornek1.png">
 Resim 2: Örnek 1
 <p> <p>
-<img src="Resimler/Ornek2.png">
+<img src="Resimler/Ornek2.png"> <br>
 Resim 3: Örnek 2
 <p> <p>
 <img src="Resimler/Ornek3.png">
