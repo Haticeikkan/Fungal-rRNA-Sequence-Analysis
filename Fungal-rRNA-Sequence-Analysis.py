@@ -2,83 +2,96 @@
 #Geliştiriciler: Ayşen İKKAN ve Hatice İKKAN :)
 
 #Gerekli kütüphaneler kullanıldı.
-from Bio.Blast import NCBIWWW, NCBIXML
-from Bio import SeqIO
+from Bio import SeqIO, SearchIO
+import subprocess
 import os
 import sys
 
 # Referans suşlarının bulunduğu klasör
-reference_folder = r"D:\Fungal-rRNA-Sequence-Analysis\Türler"
+reference_folder = r"C:\Fungal-rRNA-Sequence-Analysis\Turler"
 
-# BLAST için kullanılacak veritabanı
-database = "nt"
+# Oluşturulacak my_database.fasta dosyasının yolu ve adı
+my_database_file = os.path.join(reference_folder, "my_database.fasta")
 
-# Referans suşlarını okuma
-reference_sequences = []
-for file_name in os.listdir(reference_folder):
-    if file_name.endswith(".fasta"):
-        file_path = os.path.join(reference_folder, file_name)
-        with open(file_path, "r") as ref_handle:
-            for record in SeqIO.parse(ref_handle, "fasta"):
-                reference_sequences.append(record)
+# Eğer custom_database.fasta dosyası yoksa oluştur
+if not os.path.exists(my_database_file):
+    # Birleştirilecek .fasta dosyalarının adları
+    fasta_files = ["18S_rRNA.fasta", "28S_rRNA.fasta", "ITS.fasta"]
 
-# Analiz edilecek .fasta dosyasını buraya yazınız.
-query_file = r"D:\Fungal-rRNA-Sequence-Analysis\Fastalar\68842.fasta"
+    # my_database.fasta dosyasını oluşturma ve birleştirme
+    with open(my_database_file, "w") as output_handle:
+        for fasta_file in fasta_files:
+            file_path = os.path.join(reference_folder, fasta_file)
+            with open(file_path, "r") as input_handle:
+                for record in SeqIO.parse(input_handle, "fasta"):
+                    SeqIO.write(record, output_handle, "fasta")
+
+    print("my_database.fasta dosyası oluşturuldu.")
+else:
+    print("my_database.fasta dosyası zaten mevcut.")
+
+# BLAST veritabanını oluşturma komutu
+makeblastdb_cmd = f"makeblastdb -in {my_database_file} -dbtype nucl"
+
+# BLAST veritabanını oluşturma işlemini çalıştırma
+try:
+    subprocess.run(makeblastdb_cmd, shell=True, check=True)
+except subprocess.CalledProcessError as e:
+    print("BLAST veritabanı oluşturma işlemi başarısız oldu:", e)
+    sys.exit(1)
+
+# Analiz edilecek .fasta dosyasının buraya yazınız.
+query_file = r"C:\Fungal-rRNA-Sequence-Analysis\Fastalar\A.fasta"
 
 # BLAST sonuçlarının analiz edileceği eşik değerleri
 min_identity = 96  # Minimum eşleşme yüzdesi
 min_align_length = 95  # Minimum hizalama uzunluğu
 
-# Dosyadaki her .fasta dosyası için BLAST yapma
-with open(query_file, "r") as handle:
-    query_sequence = SeqIO.read(handle, "fasta")
-    print("Analiz Edilen Dosya: ", query_file)
-    
-    found_match = False  # En az bir eşleşme bulunduğunu belirten değişken
-            
-    for reference_sequence in reference_sequences:
-        result_handle = NCBIWWW.qblast("blastn", database, query_sequence.seq, alignments=5, descriptions=5)
-        blast_record = NCBIXML.read(result_handle)
-        
-        print("En Yüksek Benzerlik Oranına Sahip 5 Eşleşme:")
-        count = 0
-        for alignment in blast_record.alignments:
-            for hsp in alignment.hsps:
-                identity = hsp.identities / hsp.align_length * 100
-                align_length = hsp.align_length
-                        
-                if identity >= min_identity and align_length >= min_align_length:
-                    count += 1
-                    print(f"\nHit {count}:")  # Sırası
-                    print("Hit ID:", alignment.hit_id)  # Eşleşme Kimliği
-                    print("Hit Description:", alignment.hit_def)  # Eşleşme Açıklaması
-                    print("Hit E-Value:", hsp.expect)  # Eşleşme E-Değeri
-                    print("Alignment Length:", align_length)  # Hizalama uzunluğu
-                    print("Percentage Identity:", identity)  # Benzerlik yüzdeliği
-                    print("Query Length:", blast_record.query_letters) # Sorgu dizisinin uzunluğu 
-                    print("Subject Length:", len(reference_sequence))  # Referans dizisinin uzunluğu
-                    print("Query Start:", hsp.query_start)  # Sorgu dizisinin hizalanmış başlangıç pozisyonu
-                    print("Query End:", hsp.query_end)  # Sorgu dizisinin hizalanmış bitiş pozisyonu
-                    print("Subject Start:", hsp.sbjct_start)  # Referans dizisinin hizalanmış başlangıç pozisyonu
-                    print("Subject End:", hsp.sbjct_end)  # Referans dizisinin hizalanmış bitiş pozisyonu
-                    print("Query Coverage:", hsp.align_length / blast_record.query_letters * 100)  # Sorgu dizisinin hizalama boyunca kapsama yüzdesi 
-                    print("Percentage Identity (PID):", hsp.identities / hsp.align_length * 100)  # Tanımlama yüzdeliği
-                    print("Number of Identical Matches:", hsp.identities)  # Bire bir eşleşme sayısı
-                    print("Number of Mismatches:", hsp.align_length - hsp.identities - hsp.gaps)  # Hizalama boyunca farklılık gösteren nükleotid sayısı
-                    print("Number of Gaps:", hsp.gaps)  # Hizalama boyunca açık bırakılan boşluk sayısı
-                    print("Bit Score:", hsp.bits)  # HSP'nin bit puanı
-                    print("-----------------")
-                    found_match = True  # En az bir eşleşme bulundu
-                    
-                    if count == 5:
-                        break
-            if count == 5:
-                break
+# BLAST için kullanılacak veritabanı dosyası
+database = my_database_file
+
+# BLAST komutu
+blast_cmd = f"blastn -out blast_output.xml -outfmt 5 -num_alignments 5 -query {query_file} -db {database}"
+
+# BLAST işlemini çalıştırma
+try:
+    subprocess.run(blast_cmd, shell=True, check=True)
+except subprocess.CalledProcessError as e:
+    print("BLAST işlemi başarısız oldu:", e)
+    sys.exit(1)
+
+# BLAST sonuçlarını okuma ve analiz etme
+blast_records = SearchIO.parse("blast_output.xml", "blast-xml")
+
+for blast_record in blast_records:
+    print("En Yüksek Benzerlik Oranına Sahip 5 Eşleşme:")
+    count = 0
+    for hit in blast_record:
+        for hsp in hit:
+            identity = hsp.ident_num / hsp.aln_span * 100
+            align_length = hsp.aln_span
+
+            if identity >= min_identity and align_length >= min_align_length:
+                count += 1
+                print(f"\nHit {count}:")  # Sırası
+                print("Hit ID:", hit.id)  # Eşleşme Kimliği
+                print("Hit Description:", hit.description)  # Eşleşme Açıklaması
+                print("Hit E-Value:", hsp.evalue)  # Eşleşme E-Değeri
+                print("Alignment Length:", align_length)  # Hizalama uzunluğu
+                print("Percentage Identity:", identity)  # Benzerlik yüzdeliği
+                print("Query Length:", hsp.query_span)  # Sorgu dizisinin uzunluğu
+                print("Subject Length:", hsp.hit_span)  # Referans dizisinin uzunluğu
+                print("Query Start:", hsp.query_start)  # Sorgu dizisinin hizalanmış başlangıç pozisyonu
+                print("Query End:", hsp.query_end)  # Sorgu dizisinin hizalanmış bitiş pozisyonu
+                print("Subject Start:", hsp.hit_start)  # Referans dizisinin hizalanmış başlangıç pozisyonu
+                print("Subject End:", hsp.hit_end)  # Referans dizisinin hizalanmış bitiş pozisyonu
+                print("-----------------")
+                if count == 5:
+                    break
         if count == 5:
             break
-    
-    if not found_match:
+
+    if not count:
         print("Tanımlanamadı: Bu kriterlere uyan bir eşleşme bulunamadı.")
 
-print("Program sonlandırıldı.")
-sys.exit()
+print("Program sonlandı.")
