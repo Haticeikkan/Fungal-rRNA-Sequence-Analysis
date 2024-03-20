@@ -33,5 +33,5 @@ Resim 3: Örnek 2
 <img src="Resimler/Ornek3.png"> <br>
 Resim 4: Örnek 3
 
-#### NOT: Referance-Sequence-Analysis Dosyası
+#### NOT: Sequence-Analysis Dosyası
 Bu dosya Blast veritabanını kullanarak analiz yapmaktadır.
